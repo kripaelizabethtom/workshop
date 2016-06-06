@@ -18,8 +18,7 @@
 
 </head>
 
-
-<body>
+<body background="{%  static 'ima.jpeg'  %}">
 
 
 <nav class="navbar navbar-default">
@@ -85,12 +84,46 @@
 {% if request.user.is_anonymous %}
     Log in to your account
 {% else %}
+<table>
 
-    <div class="col-md-6 col-md-offset-5" style="padding-top: 10%;">
-               <a href="{% url 'add_chocolate' %}">
-                <button class="btn btn-primary">Add a chocolate</button>
-                  </a>
-    </div>
-    {% endif %}
+<div class="col-md-8 col-md-offset-2 well">
+<table class="table table-hover table-bordered table-responsive">
+    <thead>
+    <tr>
+        <th class="active">
+            Name
+        </th>
+        <th class="active">
+            Description
+        </th>
+        <th class="active">
+            Manufacturer
+        </th>
+        <th class="active">
+            Price
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in object_list %}
+        <tr>
+            <td class="active"> {{ item.name }} </td>
+            <td class="active"> {{ item.description }}</td>
+            <td class="active"> {{ item.manufacturer }}</td>
+            <td class="active"> {{ item.price }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</div>
+    <div class="col-md-offset-5" style="padding-top: 10%;">
+       <p><a href="{% url 'add_chocolate' %}">
+           <button class="btn btn-primary">Add a chocolate</button>
+       </a>
+       </p>
+   </div>
+{%  endif %}
+
 </body>
 </html>
