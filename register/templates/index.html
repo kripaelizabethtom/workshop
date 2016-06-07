@@ -73,6 +73,13 @@
                                       </i> Logout
                                   </a>
                               </li>
+                              <li>
+                                  <a href="{% url 'user_profile_update' %}">
+                                      <i class='fa fa-power-off fa-fw' style='color:red'>
+                                     </i> Edit profile
+                                  </a>
+                              </li>
+
                           </ul>
                       </div>
                   </li>
@@ -102,6 +109,9 @@
         <th class="active">
             Price
         </th>
+        <th class="active">
+            more
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -111,6 +121,7 @@
             <td class="active"> {{ item.description }}</td>
             <td class="active"> {{ item.manufacturer }}</td>
             <td class="active"> {{ item.price }}</td>
+            <td class="active"> <a href="{% url 'chocolate_info' item.id %}">Info</a> </td>
         </tr>
     {% endfor %}
     </tbody>
