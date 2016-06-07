@@ -62,7 +62,10 @@ class UserProfileUpdateView(LoginRequiredMixin, CurrentUserMixin, UpdateView):
     model = User
     fields = user_fields + user_extra_fields
     template_name = 'user_profile_update.html'
-    success_url = '/register/user/profile/'
+    success_url = '/register/user/profile/edit/success/'
 
+    def form_valid(self, form):
+        form.save()
+        return UpdateView.form_valid(self, form)
 
 
